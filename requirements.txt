@@ -1,0 +1,3 @@
+easygui==0.98.3
+pylinac==3.9.1
+PyQt5==5.15.9
