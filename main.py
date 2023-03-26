@@ -1,12 +1,17 @@
 #Imports
 from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import  QMessageBox
+from PyQt5.QtWidgets import QApplication, QMessageBox
+from PyQt5.QtCore import QProcess
+from PyQt5 import QtWidgets
+from tkinter import messagebox as msgbox
 import constructed_gui
+
+import webbrowser
 import os
+import sys
 from datetime import datetime
 import easygui
-from tkinter import messagebox as msgbox
 from pylinac import FieldAnalysis, Protocol, LasVegas, CatPhan503
 
 #Directry change
@@ -38,6 +43,11 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.pi_calculate.clicked.connect(self.pi_calc) #PlanarImaging
         self.ui.cat_calculate.clicked.connect(self.cat_calc) #CatPhan
 
+        #Menu items      
+        self.ui.actionAbout.triggered.connect(self.menu_about)
+        self.ui.actionRestart.triggered.connect(self.restart)
+        self.ui.actionExit.triggered.connect(self.exit)
+        self.ui.actionFull_documentation.triggered.connect(self.docs)
 
     #About message box popups
     def fa_desc(self):
@@ -71,6 +81,21 @@ class MyWindow(QtWidgets.QMainWindow):
         msg.setIcon(QMessageBox.Information)
         msg.setWindowIcon(QtGui.QIcon('img/naslov.ico'))
         msg.exec_() 
+
+    def menu_about(self):
+        msgbox.showinfo("About this app", "This app was developed to assist medical physics team in QA duties for linac in our clinic.\n\nDesigned and coded by MSc Mladen Babić")
+
+    def restart(self):
+        # restart function
+        QApplication.quit()
+        QProcess.startDetached(sys.executable, sys.argv)
+
+    def exit(self):
+        # exit function
+        QApplication.quit()
+
+    def docs(self):
+        webbrowser.open("https://pylinac.readthedocs.io/en/latest/")
 
     #Calculate functions
     def fa_calc(self):
@@ -169,7 +194,7 @@ class MyWindow(QtWidgets.QMainWindow):
                 if n_cat < 15:
                     x = msgbox.askokcancel('Confirm selection', message)
                 else:
-                    x = msgbox.askokcancel('Confirm selection', 'You have selected ' + str(n_cat) + ' file(s)')
+                    x = msgbox.askokcancel('Confirm selection', 'You have selected ' + str(n_cat) + ' file(s)\n\nNote: This calculation takes longer to calculate than other modules, so it may appear stuck. Just be patient and let it finish.')
 
                 if x != True:
                     msgbox.showerror("Error!", "No files selected! Please try again.")

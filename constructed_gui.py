@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '.\untitled.ui'
+# Form implementation generated from reading ui file '.\ui_blueprint.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(666, 234)
+        MainWindow.resize(666, 262)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.FieldAnalysis = QtWidgets.QGroupBox(self.centralwidget)
@@ -28,7 +28,6 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(6)
         font.setBold(True)
-        font.setWeight(75)
         self.fa_about.setFont(font)
         self.fa_about.setObjectName("fa_about")
         self.fa_elekta = QtWidgets.QRadioButton(self.FieldAnalysis)
@@ -47,13 +46,13 @@ class Ui_MainWindow(object):
         self.fa_calculate.setGeometry(QtCore.QRect(3, 89, 81, 28))
         self.fa_calculate.setObjectName("fa_calculate")
         self.welcomeTitle = QtWidgets.QLabel(self.centralwidget)
-        self.welcomeTitle.setGeometry(QtCore.QRect(20, 18, 411, 41))
+        self.welcomeTitle.setGeometry(QtCore.QRect(20, 8, 411, 41))
         font = QtGui.QFont()
         font.setPointSize(18)
         self.welcomeTitle.setFont(font)
         self.welcomeTitle.setObjectName("welcomeTitle")
         self.hline_div_main = QtWidgets.QFrame(self.centralwidget)
-        self.hline_div_main.setGeometry(QtCore.QRect(20, 60, 621, 16))
+        self.hline_div_main.setGeometry(QtCore.QRect(20, 50, 621, 16))
         self.hline_div_main.setFrameShape(QtWidgets.QFrame.HLine)
         self.hline_div_main.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.hline_div_main.setObjectName("hline_div_main")
@@ -68,7 +67,6 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(6)
         font.setBold(True)
-        font.setWeight(75)
         self.pi_about.setFont(font)
         self.pi_about.setObjectName("pi_about")
         self.pi_LasVegas = QtWidgets.QRadioButton(self.PlanarImaging)
@@ -97,7 +95,6 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(6)
         font.setBold(True)
-        font.setWeight(75)
         self.cat_about.setFont(font)
         self.cat_about.setObjectName("cat_about")
         self.cat_503 = QtWidgets.QRadioButton(self.CatPhan)
@@ -126,7 +123,6 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(6)
         font.setBold(True)
-        font.setWeight(75)
         self.wl_about.setFont(font)
         self.wl_about.setObjectName("wl_about")
         self.wl_vanilla = QtWidgets.QRadioButton(self.WinstonLutz)
@@ -149,6 +145,27 @@ class Ui_MainWindow(object):
         self.statusbar.setMouseTracking(False)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
+        self.menuBar = QtWidgets.QMenuBar(MainWindow)
+        self.menuBar.setGeometry(QtCore.QRect(0, 0, 666, 26))
+        self.menuBar.setStyleSheet("background-color: rgb(240, 240, 240);")
+        self.menuBar.setObjectName("menuBar")
+        self.menuFile = QtWidgets.QMenu(self.menuBar)
+        self.menuFile.setObjectName("menuFile")
+        MainWindow.setMenuBar(self.menuBar)
+        self.actionAbout = QtWidgets.QAction(MainWindow)
+        self.actionAbout.setObjectName("actionAbout")
+        self.actionRestart = QtWidgets.QAction(MainWindow)
+        self.actionRestart.setObjectName("actionRestart")
+        self.actionExit = QtWidgets.QAction(MainWindow)
+        self.actionExit.setObjectName("actionExit")
+        self.actionFull_documentation = QtWidgets.QAction(MainWindow)
+        self.actionFull_documentation.setObjectName("actionFull_documentation")
+        self.menuFile.addAction(self.actionAbout)
+        self.menuFile.addAction(self.actionFull_documentation)
+        self.menuFile.addSeparator()
+        self.menuFile.addAction(self.actionRestart)
+        self.menuFile.addAction(self.actionExit)
+        self.menuBar.addAction(self.menuFile.menuAction())
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -177,6 +194,11 @@ class Ui_MainWindow(object):
         self.wl_vanilla.setText(_translate("MainWindow", "Vanilla"))
         self.wl_multi.setText(_translate("MainWindow", "Multi target"))
         self.wl_calculate.setText(_translate("MainWindow", "Calculate"))
+        self.menuFile.setTitle(_translate("MainWindow", "File"))
+        self.actionAbout.setText(_translate("MainWindow", "About"))
+        self.actionRestart.setText(_translate("MainWindow", "Restart"))
+        self.actionExit.setText(_translate("MainWindow", "Exit"))
+        self.actionFull_documentation.setText(_translate("MainWindow", "Full documentation"))
 
 
 if __name__ == "__main__":
